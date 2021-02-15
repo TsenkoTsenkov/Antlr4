@@ -141,11 +141,11 @@ InterfaceGenerator/JavaParser.java
  InterfaceGenerator.JavaParser$VariableModifiersContext
  InterfaceGenerator.JavaParser$VoidInterfaceMethodDeclaratorRestContext
  InterfaceGenerator.JavaParser$VoidMethodDeclaratorRestContext
-InterfaceGenerator/ExtractInterfaceListener.java
- InterfaceGenerator.ExtractInterfaceListener
-InterfaceGenerator/JavaListener.java
- InterfaceGenerator.JavaListener
 InterfaceGenerator/JavaLexer.java
  InterfaceGenerator.JavaLexer
+InterfaceGenerator/JavaListener.java
+ InterfaceGenerator.JavaListener
+InterfaceGenerator/ExtractInterfaceListener.java
+ InterfaceGenerator.ExtractInterfaceListener
 InterfaceGenerator/ExtractInterfaceTool.java
  InterfaceGenerator.ExtractInterfaceTool

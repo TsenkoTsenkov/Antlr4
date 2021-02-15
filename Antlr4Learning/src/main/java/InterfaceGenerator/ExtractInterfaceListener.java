@@ -1,6 +1,8 @@
 package InterfaceGenerator;
 import org.antlr.v4.runtime.TokenStream;
-import org.antlr.v4.runtime.misc.Interval;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+import java.util.List;
 
 public class ExtractInterfaceListener extends JavaBaseListener {
     JavaParser parser;
@@ -15,7 +17,22 @@ public class ExtractInterfaceListener extends JavaBaseListener {
         System.out.println("}");
     }
 
-/** Listen to matches of methodDeclaration */
+    @Override
+    public void enterImportDeclaration(JavaParser.ImportDeclarationContext ctx) {
+        List<TerminalNode> identifier = ctx.qualifiedName().Identifier();
+        String stringyfiedId = identifier
+                .stream()
+                .map(node -> node.getSymbol().getText())
+                .reduce("", (a,b) -> a + b + ".");
+
+        System.out.println("import "+
+                                    stringyfiedId.substring(0, stringyfiedId.length()-1)
+                                     + ";"
+        );
+    }
+
+
+    /** Listen to matches of methodDeclaration */
     @Override
     public void enterMethodDeclaration(
             JavaParser.MethodDeclarationContext ctx
@@ -30,4 +47,5 @@ public class ExtractInterfaceListener extends JavaBaseListener {
         String args = tokens.getText(ctx.formalParameters());
         System.out.println("\t"+type+" "+ctx.Identifier()+args+";");
     }
+
 }
