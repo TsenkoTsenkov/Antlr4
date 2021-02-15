@@ -21,7 +21,7 @@ public class Calc {
                 clear
                 a = 5
                 a = 4
-                a+b*2
+                a+b*3
                 """;
         CharStream input = CharStreams.fromStream(new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8)));
 
