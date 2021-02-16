@@ -10,6 +10,7 @@ public class ExtractInterfaceListener extends JavaBaseListener {
     /** Listen to matches of classDeclaration */
     @Override
     public void enterClassDeclaration(JavaParser.ClassDeclarationContext ctx){
+        System.out.println();
         System.out.println("interface I"+ctx.Identifier()+" {");
     }
     @Override
@@ -18,15 +19,33 @@ public class ExtractInterfaceListener extends JavaBaseListener {
     }
 
     @Override
+    public void enterPackageDeclaration(JavaParser.PackageDeclarationContext ctx) {
+        System.out.print("package ");
+        List<TerminalNode> nodes = ctx.qualifiedName().Identifier();
+        for (int i=0; i<nodes.size(); i++) {
+            System.out.print(nodes.get(i).getSymbol().getText());
+            if (i < nodes.size()-1) {
+                System.out.print(".");
+            }
+        }
+    }
+
+    @Override
+    public void exitPackageDeclaration(JavaParser.PackageDeclarationContext ctx) {
+        System.out.print(";");
+        System.out.println();
+    }
+
+    @Override
     public void enterImportDeclaration(JavaParser.ImportDeclarationContext ctx) {
         List<TerminalNode> identifier = ctx.qualifiedName().Identifier();
-        String stringyfiedId = identifier
+        String stringedId = identifier
                 .stream()
                 .map(node -> node.getSymbol().getText())
                 .reduce("", (a,b) -> a + b + ".");
 
         System.out.println("import "+
-                                    stringyfiedId.substring(0, stringyfiedId.length()-1)
+                                    stringedId.substring(0, stringedId.length()-1)
                                      + ";"
         );
     }
