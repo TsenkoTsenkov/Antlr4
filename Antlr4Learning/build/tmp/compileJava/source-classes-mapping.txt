@@ -149,3 +149,7 @@ InterfaceGenerator/ExtractInterfaceListener.java
  InterfaceGenerator.ExtractInterfaceListener
 InterfaceGenerator/ExtractInterfaceTool.java
  InterfaceGenerator.ExtractInterfaceTool
+InterfaceGenerator/ExtractInterfaceListener.java
+ InterfaceGenerator.ExtractInterfaceListener
+InterfaceGenerator/Demo.java
+ InterfaceGenerator.Demo
